@@ -33,7 +33,7 @@ public class GedcomFixAncestryExport {
 
     private final Pattern pH = Pattern.compile("(0) (HEAD)");
     private final Pattern pT = Pattern.compile("(0) (TRLR)");
-    private final Pattern p0 = Pattern.compile("(0) @[A-Za-z0-9]+@ ([A-Z_]{3,5}).*");
+    private final Pattern p0 = Pattern.compile("(0) @[-A-Za-z0-9]+@ ([A-Z_]{3,5}).*");
     private final Pattern pN = Pattern.compile("([0-9]) ([A-Z_]{3,5}).*");
 
     private void process() throws IOException {

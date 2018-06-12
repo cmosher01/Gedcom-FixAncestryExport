@@ -21,6 +21,7 @@ public class GedcomFixAncestryExport {
     private int level = -1;
     private String tag = "";
     private String line;
+    private int cBad;
 
     private GedcomFixAncestryExport(final String cs) throws IOException {
         this.in = new BufferedReader(new InputStreamReader(new FileInputStream(FileDescriptor.in), cs));
@@ -29,6 +30,10 @@ public class GedcomFixAncestryExport {
     private void main() throws IOException {
         process();
         this.in.close();
+        if (this.cBad > 0) {
+            System.err.println("ANCESTRY GEDCOM FIXER: bad lines found: " + Integer.toString(this.cBad));
+            System.err.flush();
+        }
     }
 
     private final Pattern pH = Pattern.compile("(0) (HEAD)");
@@ -74,6 +79,7 @@ public class GedcomFixAncestryExport {
     }
 
     private void bad() {
+        this.cBad++;
         this.level = this.level + conx();
         System.out.println(Integer.toString(this.level) + " CONT " + this.line);
         this.tag = "CONT";

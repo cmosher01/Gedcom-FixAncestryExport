@@ -4,7 +4,6 @@ apply plugin: 'application'
 group 'nu.mine.mosher.gedcom'
 version '1.0.0-SNAPSHOT'
 mainClassName = 'nu.mine.mosher.gedcom.GedcomFixAncestryExport'
-sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
